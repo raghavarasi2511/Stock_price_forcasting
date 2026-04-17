@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>AI Stock Prediction Dashboard</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
+
+  <body>
+    <!-- VIDEO BACKGROUND -->
+    <div class="video-container">
+      <video autoplay muted loop playsinline>
+        <source src="{{ url_for('static', filename='images/stockbg.mp4') }}" type="video/mp4" />
+      </video>
+    </div>
+
+    <div class="overlay"></div>
+
+    <div class="page-content">
+      <h1 class="title text-center">
+        <i class="fa-solid fa-chart-line"></i>
+        AI Stock Prediction Dashboard
+      </h1>
+
+      <div class="container">
+        <!-- INPUT SECTION -->
+        <div class="row g-4 justify-content-center">
+          <!-- AUTO -->
+          <div class="col-lg-5 col-md-10">
+            <div class="glass-card p-4">
+              <h4><i class="fa-solid fa-robot"></i> Auto Fetch</h4>
+
+              <input id="ticker" class="form-control mb-3" placeholder="Ticker (AAPL / TSLA / RELIANCE.NS)" />
+              <input type="date" id="date" class="form-control mb-3" />
+
+              <button class="btn btn-primary w-100" onclick="autoPredict()">Fetch & Predict</button>
+            </div>
+          </div>
+
+          <!-- MANUAL -->
+          <div class="col-lg-5 col-md-10">
+            <div class="glass-card p-4">
+              <h4><i class="fa-solid fa-keyboard"></i> Manual Input</h4>
+
+              <input id="manual_ticker" class="form-control mb-3" placeholder="Ticker" />
+
+              <input id="open" class="form-control mb-2" placeholder="Open Price" />
+              <input id="high" class="form-control mb-2" placeholder="High Price" />
+              <input id="low" class="form-control mb-2" placeholder="Low Price" />
+              <input id="close" class="form-control mb-2" placeholder="Close Price" />
+              <input id="volume" class="form-control mb-3" placeholder="Volume" />
+
+              <button class="btn btn-success w-100" onclick="manualPredict()">Predict Price</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- RESULT CARD -->
+        <div class="row justify-content-center mt-5">
+          <div class="col-lg-6 col-md-10">
+            <div class="result-card text-center">
+              <h3>Next-Day Prediction Result</h3>
+
+              <h1 id="price">--</h1>
+
+              <div id="direction"></div>
+
+              <p id="change"></p>
+              <p style="opacity:0.7; font-size:14px;">Prediction is for next trading day</p>
+
+              <div id="animal"></div>
+
+              <!-- CONFIDENCE -->
+              <div class="confidence-section mt-4">
+                <h6>AI Confidence</h6>
+
+                <div class="progress">
+                  <div id="confidenceBar" class="progress-bar" style="width:0%">0%</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- STOCK CHART -->
+        <div class="row justify-content-center mt-5">
+          <div class="col-lg-10">
+            <div class="glass-card p-4 chart-card">
+              <h4><i class="fa-solid fa-chart-area"></i> Stock Price Chart</h4>
+
+              <div class="chart-container">
+                <canvas id="stockChart"></canvas>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- BACKTEST -->
+        <div class="row justify-content-center mt-5">
+          <div class="col-lg-10">
+            <div class="glass-card p-4">
+              <h4><i class="fa-solid fa-chart-bar"></i> Backtesting Panel</h4>
+
+              <p id="maeText"></p>
+
+              <div class="chart-container">
+                <canvas id="backtestChart"></canvas>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+  </body>
+</html>

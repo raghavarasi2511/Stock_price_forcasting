@@ -1,0 +1,168 @@
+html,body{
+height:100%;
+margin:0;
+font-family:'Segoe UI',sans-serif;
+color:white;
+overflow-x:hidden;
+}
+
+/* VIDEO */
+.video-container{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+z-index:-2;
+overflow:hidden;
+}
+
+.video-container video{
+width:100%;
+height:100%;
+object-fit:cover;
+}
+
+.overlay{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.55);
+z-index:-1;
+}
+
+/* PAGE */
+.page-content{
+position:relative;
+z-index:2;
+min-height:100vh;
+padding-top:70px;
+}
+
+/* TITLE */
+.title{
+font-weight:700;
+letter-spacing:2px;
+margin-bottom:40px;
+text-shadow:0 2px 15px rgba(0,0,0,0.7);
+}
+
+/* CARDS */
+.glass-card{
+background:rgba(255,255,255,0.1);
+border-radius:16px;
+backdrop-filter:blur(15px);
+box-shadow:0 20px 50px rgba(0,0,0,0.6);
+transition:0.3s;
+}
+
+.glass-card:hover{
+transform:translateY(-6px);
+}
+
+/* RESULT */
+.result-card{
+background:rgba(255,255,255,0.1);
+padding:40px;
+border-radius:20px;
+box-shadow:0 25px 60px rgba(0,0,0,0.7);
+text-align:center;
+}
+
+.result-card h1{
+font-size:52px;
+font-weight:bold;
+}
+
+/* BULL / BEAR */
+.bull{
+color:#00ff9c;
+font-size:24px;
+font-weight:600;
+}
+
+.bear{
+color:#ff4d4d;
+font-size:24px;
+font-weight:600;
+}
+
+/* GIF */
+#animal{
+margin-top:15px;
+}
+
+#animal img{
+width:200px;
+animation:float 2s infinite ease-in-out;
+}
+
+@keyframes float{
+0%{transform:translateY(0)}
+50%{transform:translateY(-10px)}
+100%{transform:translateY(0)}
+}
+
+/* INPUT */
+input{
+background:rgba(255,255,255,0.15)!important;
+border:none!important;
+color:white!important;
+}
+
+input::placeholder{
+color:#ddd;
+}
+
+/* BUTTON */
+button{
+font-weight:600!important;
+border-radius:8px;
+}
+
+/* CHART */
+.chart-container{
+height:400px;
+width:100%;
+}
+
+/* CONFIDENCE */
+.progress{
+height:22px;
+background:rgba(255,255,255,0.2);
+border-radius:10px;
+overflow:hidden;
+}
+
+.progress-bar{
+font-weight:bold;
+text-align:center;
+color:black;
+transition:0.5s;
+}
+
+/* MOBILE */
+@media(max-width:768px){
+
+.title{
+font-size:26px;
+}
+
+.result-card{
+padding:25px;
+}
+
+.result-card h1{
+font-size:36px;
+}
+
+#animal img{
+width:140px;
+}
+
+}
+#backtestChart{
+height:400px !important;
+}
